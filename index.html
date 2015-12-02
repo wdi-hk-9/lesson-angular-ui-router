@@ -9,10 +9,13 @@
     <script src="js/app.js"></script>
     <script src="js/TodosController.js"></script>
     <link rel="stylesheet" href="css/style.css">
+
+    <base href="/">
   </head>
 
-  <body ui-view>
-
+  <body>
+    <div ui-view class="wrapper" ng-controller="TodosController">
+    </div>
   </body>
 </html>
 
