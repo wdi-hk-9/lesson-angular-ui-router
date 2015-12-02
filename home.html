@@ -1,0 +1,26 @@
+<div class="wrapper" ng-controller="TodosController">
+  <header>
+    <h1>YOU'VE GOT {{ remainingTodos().length }} THINGS TO DO!</h1>
+    <h4>{{ completedTodos().length }} things completed | {{ remainingTodos().length }} things remaining</h4>
+  </header>
+  <main>
+    <!-- begin add new todo -->
+    <form class="add-todo" ng-submit="addTodo()">
+      <input class="text-box" type="text" placeholder="I need to..." ng-model="text">
+      <input type="submit" class="btn btn-add" value="+">
+    </form>
+    <!-- end add new todo -->
+
+    <!-- begin show all todos -->
+    <section class="todo-list">
+      <ul>
+        <li ng-repeat="todo in remainingTodos()">
+          <input class="checkbox" type="checkbox" ng-model="todo.done" id="todo-{{$index}}">
+          <label for="todo-{{$index}}" ng-class="{done: todo.done}">{{ todo.task }}</label>
+          <button class="btn btn-delete" ng-click="deleteTodo($index)">x</button>
+        </li>
+      </ul>
+    </section>
+    <!-- end show all todos -->
+  </main>
+</div>
