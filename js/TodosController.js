@@ -2,6 +2,8 @@ angular
   .module("todoApp")
   .controller("TodosController", ["$scope", function TodosController($scope){
 
+    $scope.editing = false;
+
     $scope.todoList = [
       {task: "build an awesome todo app", done: false},
       {task: "get super good at Angular", done: false},

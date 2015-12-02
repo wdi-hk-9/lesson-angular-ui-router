@@ -6,6 +6,7 @@
 <nav class='tabs'>
   <a ui-sref-active="active" ui-sref="home">My List</a>
   <a ui-sref-active="active" ui-sref="archive">Archives</a>
+  <a ui-sref-active="active" ui-sref="about">About</a>
 </nav>
 
 <main>
@@ -21,8 +22,31 @@
     <ul>
       <li ng-repeat="todo in remainingTodos()">
         <input class="checkbox" type="checkbox" ng-model="todo.done" id="todo-{{$index}}">
-        <label for="todo-{{$index}}" ng-class="{done: todo.done}">{{ todo.task }}</label>
-        <button class="btn btn-delete" ng-click="deleteTodo($index)">x</button>
+
+        <!-- Label of todo.task | Hide in editing-->
+        <label ng-hide="editing"
+               for="todo-{{$index}}"
+               ng-class="{done: todo.done}">{{ todo.task }}</label>
+        <!-- Input for Editing Todo | Show in editing-->
+        <input ng-show="editing"
+               type="text"
+               ng-model="todo.edit">
+        <!-- Delete Button | Hide in editing-->
+        <button ng-hide="editing"
+                class="btn btn-delete"
+                ng-click="deleteTodo($index)">x</button>
+        <!-- Edit Button | Hide in editing-->
+        <button ng-hide="editing"
+                class="btn btn-delete"
+                ng-click="todo.edit = todo.task; editing = true">Edit</button>
+        <!-- Save Button | Show in editing -->
+        <button ng-show="editing"
+                class="btn btn-delete"
+                ng-click="todo.task = todo.edit; editing = false">Save</button>
+        <!-- Cancel Button | Show in editing -->
+        <button ng-show="editing"
+                class="btn btn-delete"
+                ng-click="editing = false">Cancel</button>
       </li>
     </ul>
   </section>

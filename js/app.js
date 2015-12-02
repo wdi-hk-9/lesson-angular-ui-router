@@ -11,9 +11,13 @@ function MainRouter ($stateProvider, $urlRouterProvider, $locationProvider) {
   .state('archive', {
     url: "/archive",
     templateUrl: "archive.html"
+  })
+  .state('about', {
+    url: "/about",
+    templateUrl: "about.html"
   });
 
   $urlRouterProvider.otherwise("/");
 
-  $locationProvider.html5Mode(true);
+  // $locationProvider.html5Mode(true);
 }
